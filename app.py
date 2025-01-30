@@ -11,16 +11,13 @@ with open('students.json') as f:
 
 # Create a dictionary for fast lookup by name
 student_dict = {student['name']: student['marks'] for student in student_data['students']}
-
+@app.route("/")
+def welcome():
+    return "welcome all!"
 @app.route('/api', methods=['GET'])
 def get_marks():
-    # Retrieve the 'name' query parameters from the request
     names = request.args.getlist('name')
-    
-    # Look up the marks for each name
     marks = [student_dict.get(name, "Not Found") for name in names]
-    
-    # Return the results in a JSON response
     return jsonify({"marks": marks})
 
 if __name__ == '__main__':
