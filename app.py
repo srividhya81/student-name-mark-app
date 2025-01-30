@@ -20,5 +20,5 @@ def get_marks():
     marks = [student_dict.get(name, "Not Found") for name in names]
     return jsonify({"marks": marks})
 
-if __name__ == '__main__':
-    app.run(debug=True)
+#if __name__ == '__main__':
+ #   app.run(debug=True,port =5000)
